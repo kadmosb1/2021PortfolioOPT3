@@ -10,6 +10,34 @@ public class Pretpark {
     private ArrayList<Attractie> attracties;
 
     public static double getPrijs (int leeftijd, boolean jaarkaart, boolean begeleiding, int groepsomvang) {
-        return 0.0;
+
+        double prijs = BASISPRIJS;
+
+        if (leeftijd >= VOLWASSEN_LEEFTIJD) {
+            prijs = prijs * 0.8;
+        }
+        else if (leeftijd <= KIND_LEEFTIJD) {
+            prijs = 0.0;
+        }
+
+        if (jaarkaart) {
+            prijs = 0.0;
+        }
+
+        if (groepsomvang >= GROEPSOMVANG_MET_KORTING) {
+            prijs = prijs * 0.8;
+        }
+
+        if (!begeleiding) {
+
+            if (prijs == 0.0) {
+                prijs = -1.0;
+            }
+            else {
+                prijs = prijs * -1;
+            }
+        }
+
+        return prijs;
     }
 }
