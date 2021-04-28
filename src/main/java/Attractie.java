@@ -9,6 +9,6 @@ public class Attractie {
     }
 
     public boolean weigeringBijToegangscontrole (int leeftijd, int lengte) {
-        return true;
+        return (leeftijd < minimaleLeeftijd) || (lengte < minimaleLengte);
     }
 }
